@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  depature_airport: one
+  arrival_airport: one
+  start: 2024-12-20 21:47:55
+  duration: 2024-12-20 21:47:55
+
+two:
+  depature_airport: two
+  arrival_airport: two
+  start: 2024-12-20 21:47:55
+  duration: 2024-12-20 21:47:55
