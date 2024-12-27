@@ -61,3 +61,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "faker", "~> 3.5"
+
+gem "css-zero", "~> 0.0.77"
+
+gem "bullet", "~> 8.0"
