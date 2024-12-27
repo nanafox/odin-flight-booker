@@ -1,0 +1,44 @@
+<%= form_with url: "#", method: :get, class: "card flex flex-col gap", style: "inline-size: 350px" do |form| %>
+  <input
+    type="hidden"
+    name="num_tickets"
+    value="<%= @searched_query[:num_tickets] %>"
+  >
+    <div class="flex flex-col gap-half">
+      <h1 class="text-2xl font-semibold leading-none">Available Flights</h1>
+      <p class="text-subtle text-xl">
+        Searched query:
+        <ul>
+          <li class="text-subtle text-sm">Departure Airport:
+            <%= @searched_query[:departure_airport] || "nil" %></li>
+          <li class="text-sm text-subtle">Arrival Airport:
+            <%= @searched_query[:arrival_airport] || "nil" %></li>
+          <li class="text-sm text-subtle">Number of Tickets:
+            <%= @searched_query[:num_tickets] || "nil" %></li>
+          <li class="text-sm text-subtle">Flight Date:
+            <%= @searched_query[:start] || "nil" %></li>
+        </ul>
+      </p>
+    </div>
+    <% if @available_flights.nil? || @available_flights.empty? %>
+      <p>No available flights for this query.</p>
+    <% else %>
+      <% @available_flights.each do |flight| %>
+        <div class="flex flex-col gap mb-2">
+          <div class="flex gap">
+            <div>
+              <%= form.radio_button :flight, flight.number %>
+            </div>
+            <div>
+              <%= form.label flight.number, flight.details %>
+              <p>Flight Number:
+                <%= flight.number %></p>
+              <p>Flight Duration:
+                <%= flight.duration_in_hours %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%= form.submit "Book", class: "btn btn--primary" %>
+    <% end %>
+  <% end %>

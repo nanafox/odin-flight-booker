@@ -1,0 +1,47 @@
+<%= form_with url: flights_path, method: :get, class: "card flex flex-col gap", style: "inline-size: 350px" do |form| %>
+  <div class="flex flex-col gap-half">
+    <h1 class="text-2xl font-semibold leading-none">Flight</h1>
+    <p class="text-sm text-subtle">Number of flights:
+      <%= @flights_count %>
+    </p>
+    <p class="text-sm text-subtle">Number of airports:
+      <%= @airports.size %>
+    </p>
+  </div>
+  <% if alert %>
+    <p class="text-sm text-subtle" style="color: red;">
+      <%= alert %>
+    </p>
+  <% end %>
+  <div class="flex flex-col gap mb-2">
+    <div class="flex flex-col gap-half">
+      <%= form.label :departure_airport,
+                 "Departure Airport: ",
+                 class: "text-sm font-medium leading-none" %>
+      <%= form.select :departure_airport,
+                  @airports.map { |airport| [airport.code, airport.code] },
+                  {},
+                  class: "input" %>
+    </div>
+    <div class="flex flex-col gap-half">
+      <%= form.label :arrival_airport,
+                 "Arrival Airport: ",
+                 class: "text-sm font-medium leading-none" %>
+      <%= form.select :arrival_airport,
+                  @airports.map { |airport| [airport.code, airport.code] },
+                  {},
+                  class: "input" %>
+    </div>
+    <div class="flex flex-col gap-half">
+      <%= form.label :num_tickets,
+                 "Number of Tickets: ",
+                 class: "text-sm font-medium leading-none" %>
+      <%= form.select :num_tickets, 1..4, {}, class: "input" %>
+    </div>
+    <div class="flex flex-col gap-half">
+      <%= form.label :start, "Flight Date: ", class: "text-sm font-medium leading-none" %>
+      <%= form.date_field :start, class: "input", required: true %>
+    </div>
+  </div>
+  <%= form.submit "Search", class: "btn btn--primary" %>
+<% end %>
