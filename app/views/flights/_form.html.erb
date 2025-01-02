@@ -39,7 +39,9 @@
       <%= form.select :num_tickets, 1..4, {}, class: "input" %>
     </div>
     <div class="flex flex-col gap-half">
-      <%= form.label :start, "Flight Date: ", class: "text-sm font-medium leading-none" %>
+      <%= form.label :start,
+                 "Flight Date (mm/dd/yyyy): ",
+                 class: "text-sm font-medium leading-none" %>
       <%= form.date_field :start, class: "input", required: true %>
     </div>
   </div>
