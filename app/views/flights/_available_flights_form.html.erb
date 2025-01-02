@@ -33,10 +33,10 @@
         <div class="flex flex-col gap mb-2">
           <div class="flex gap">
             <div>
-              <%= form.radio_button :flight, flight.number, required: true %>
+              <%= form.radio_button :flight, flight.id, required: true %>
             </div>
             <div>
-              <%= form.label "flight_#{flight.number}", flight.details %>
+              <%= form.label "flight_#{flight.id}", flight.details %>
               <p>Flight Number:
                 <%= flight.number %></p>
               <p>Flight Duration:
