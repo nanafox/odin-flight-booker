@@ -1,4 +1,4 @@
-<%= form_with url: "#", method: :get,
+<%= form_with url: new_booking_path, method: :get,
   class: "card flex flex-col gap",
   style: "inline-size: 350px" do |form| %>
   <input
@@ -8,23 +8,7 @@
   >
     <div class="flex flex-col gap-half">
       <h1 class="text-2xl font-semibold leading-none">Available Flights</h1>
-      <p class="text-subtle text-xl">
-        Searched query:
-        <ul>
-          <li class="text-subtle text-sm">Departure Airport:
-            <%= @searched_query[:departure_airport] || "nil" %>
-          </li>
-          <li class="text-sm text-subtle">Arrival Airport:
-            <%= @searched_query[:arrival_airport] || "nil" %>
-          </li>
-          <li class="text-sm text-subtle">Number of Tickets:
-            <%= @searched_query[:num_tickets] || "nil" %>
-          </li>
-          <li class="text-sm text-subtle">Flight Date:
-            <%= @searched_query[:start] || "nil" %>
-          </li>
-        </ul>
-      </p>
+      <%= render "shared/searched_query", searched_query: @searched_query %>
     </div>
     <% if @available_flights.nil? || @available_flights.empty? %>
       <p>No available flights for this query.</p>
