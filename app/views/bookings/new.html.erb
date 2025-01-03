@@ -1,0 +1,39 @@
+<div class="mb-4">
+  <h1 class="text-2xl font-bold">Bookings</h1>
+  <%= render "shared/searched_query", searched_query: @searched_query %>
+</div>
+<%= form_with model: @booking, class: "card" do |form| %>
+  <div class="mb-4 card flex flex-col gap">
+    <div class="gap-half">
+      <%= form.label :flight, "Flight Code: #{@flight.details}" %>
+      <%= form.text_field :flight,
+                      id: @flight.id,
+                      value: @flight.id,
+                      readonly: true,
+                      class: "input text-subtle" %>
+    </div>
+    <div>
+      <%= form.label :num_tickers, "Number of Passengers" %>
+      <%= form.text_field :num_tickets,
+                      value: @searched_query[:num_tickets],
+                      readonly: true,
+                      class: "input text-subtle" %>
+    </div>
+  </div>
+  <fieldset class="card mb-4">
+    <legend class="text-xl font-medium">Passenger(s) Info</legend>
+    <%= form.fields_for :passengers do |passenger| %>
+      <div class="mb-4 card flex flex-col gap">
+        <div>
+          <%= passenger.label :name %>
+          <%= passenger.text_field :name, class: "input", required: true %>
+        </div>
+        <div>
+          <%= passenger.label :email %>
+          <%= passenger.email_field :email, class: "input", required: true %>
+        </div>
+      </div>
+    <% end %>
+  </fieldset>
+  <%= form.submit "Create Booking", class: "btn btn--primary" %>
+<% end %>

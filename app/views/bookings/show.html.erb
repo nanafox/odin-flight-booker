@@ -1,0 +1,16 @@
+<h1 class="text-2xl font-bold">Booking Details</h1>
+<div>
+  <h3 class="text-xl font-semibold">ID:
+    <%= @booking.id %></h3>
+  <ul>
+    <h3 class="text-xl font-semibold">Passengers:</h3>
+    <% @booking.passengers.each do |passenger| %>
+      <li>
+        <p>Name:
+          <%= passenger.name %></p>
+        <p>Email:
+          <%= passenger.email %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
