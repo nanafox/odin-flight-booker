@@ -1,0 +1,17 @@
+<p class="text-subtle text-xl">
+  Searched query:
+  <ul>
+    <li class="text-subtle text-sm">Departure Airport:
+      <%= searched_query[:departure_airport] || "nil" %>
+    </li>
+    <li class="text-sm text-subtle">Arrival Airport:
+      <%= searched_query[:arrival_airport] || "nil" %>
+    </li>
+    <li class="text-sm text-subtle">Number of Tickets:
+      <%= searched_query[:num_tickets] || "nil" %>
+    </li>
+    <li class="text-sm text-subtle">Flight Date:
+      <%= searched_query[:start] || "nil" %>
+    </li>
+  </ul>
+</p>
