@@ -2,6 +2,8 @@ class Flight < ApplicationRecord
   belongs_to :departure_airport, class_name: "Airport"
   belongs_to :arrival_airport, class_name: "Airport"
 
+  has_and_belongs_to_many :bookings
+
   before_validation :set_number
 
   validates_associated :departure_airport, :arrival_airport
