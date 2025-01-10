@@ -65,4 +65,4 @@ end
 
 gem "faker", "~> 3.5"
 
-gem "css-zero", "~> 0.0.84"
+gem "css-zero", "~> 0.0.85"
