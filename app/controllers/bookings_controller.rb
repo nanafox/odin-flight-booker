@@ -22,9 +22,16 @@ class BookingsController < ApplicationController
     @booking.flights << @flight
 
     if @booking.save
-      redirect_to @booking, notice: "Booking added successfully"
+      @booking.passengers.each do |passenger|
+        PassengerMailer
+          .with(passenger: passenger, booking: @booking)
+          .confirm
+          .deliver_later
+      end
+
+      redirect_to(@booking, notice: "Booking added successfully")
     else
-      render :new, status: :unprocessable_entity
+      render(:new, status: :unprocessable_entity)
     end
   end
 
@@ -37,7 +44,7 @@ class BookingsController < ApplicationController
     @flight = Flight.find_by(id: params[:flight])
 
     unless @flight
-      redirect_to flights_path, alert: "Flight not found!"
+      redirect_to(flights_path, alert: "Flight not found!")
     end
   end
 
@@ -49,7 +56,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find_by(id: params[:id])
 
     if @booking.nil?
-      redirect_to root_path, alert: "Booking not found!"
+      redirect_to(root_path, alert: "Booking not found!")
     end
   end
 end
