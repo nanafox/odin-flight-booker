@@ -65,6 +65,6 @@ end
 
 gem "faker", "~> 3.5"
 
-gem "css-zero", "~> 0.0.92"
+gem "css-zero", "~> 0.0.93"
 
 gem "letter_opener", group: :development
